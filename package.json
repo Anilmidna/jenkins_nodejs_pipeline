@@ -1,0 +1,13 @@
+{
+  "name": "node-ci-cd-demo",
+  "version": "1.0.0",
+  "description": "Tiny Express app for Jenkins->Docker->EC2 demo",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node -e \"process.exit(0)\""
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
