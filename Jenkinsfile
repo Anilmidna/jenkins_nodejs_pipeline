@@ -44,16 +44,24 @@ pipeline {
         '''
       }
     }
-    stage('Smoke Test') {
-      steps {
-        sh '''
-          set -e
-          # Basic health check
-          curl -fsS http://localhost/health >/dev/null
-        '''
-      }
-    }
+stage('Smoke Test') {
+  steps {
+    sh '''
+      set -e
+      for i in {1..30}; do
+        if curl -fsS http://localhost/health >/dev/null; then
+          echo "Health OK"; exit 0
+        fi
+        echo "[$i/30] Waiting for app..."
+        docker logs --tail 20 node-ci-app || true
+        sleep 2
+      done
+      echo "App did not become healthy in time"
+      docker logs node-ci-app || true
+      exit 1
+    '''
   }
+}
   post {
     success {
       echo "Deployed. Hit http://<EC2-Public-IP>/ and /version"
