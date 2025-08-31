@@ -34,6 +34,7 @@ app.get('/version', (_req, res) => {
   res.json({ version: APP_VERSION, timestamp: new Date().toISOString() });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`App listening on port ${PORT}`);
 });
+
