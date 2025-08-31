@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
           <li>Health: <a href="/health">/health</a></li>
           <li>Version: <a href="/version">/version</a></li>
         </ul>
-        <p>CHANGED TEXT HERE, commit & push → Jenkins auto-deploys.</p>
+        <p>THIS IS WORKING FINE, commit & push → Jenkins auto-deploys.</p>
       </body>
     </html>
   `);
